@@ -36,4 +36,9 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, RTD_test.class));
         onPause();
     }
+
+    public void AM(View view) {
+        startActivity(new Intent(this, AM_test.class));
+        onPause();
+    }
 }
