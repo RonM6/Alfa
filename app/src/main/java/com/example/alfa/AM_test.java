@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.TextView;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +24,7 @@ public class AM_test extends AppCompatActivity {
 
     private AlarmManager alarmMgr;
     private PendingIntent alarmIntent;
-    private int ALARM_RQST_CODE = 1;
+    private int ALARM_RQST_CODE = 0;
     private TextView tV;
 
 
@@ -64,6 +65,7 @@ public class AM_test extends AppCompatActivity {
 
     private void openTimePickerDialog(boolean is24r) {
         Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, onTimeSetListener,
                 calendar.get(Calendar.HOUR_OF_DAY),
@@ -121,6 +123,7 @@ public class AM_test extends AppCompatActivity {
     public void cancelAlarm(View view) {
         Intent intent = new Intent(this, AlarmReceiver.class);
         alarmIntent = PendingIntent.getBroadcast(this,
+
                 ALARM_RQST_CODE, intent, PendingIntent.FLAG_IMMUTABLE);
         alarmMgr = (AlarmManager)this.getSystemService(Context.ALARM_SERVICE);
         alarmMgr.cancel(alarmIntent);

@@ -24,7 +24,6 @@ public class GPS_test extends AppCompatActivity {
     }
 
     private void checkMyPermission() {
-
     }
 
 
