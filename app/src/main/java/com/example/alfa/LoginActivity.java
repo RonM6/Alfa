@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -38,6 +39,16 @@ public class LoginActivity extends AppCompatActivity {
     public void register(View view){
         EditText emailEditText = findViewById(R.id.edittext_email);
         EditText passwordEditText = findViewById(R.id.edittext_password);
+        String email = String.valueOf(emailEditText.getText());
+        String password = String.valueOf(passwordEditText.getText());
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(LoginActivity.this, "Email is empty",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(LoginActivity.this, "Password is empty",Toast.LENGTH_SHORT).show();
+            return;
+        }
         mAuth.createUserWithEmailAndPassword(
                 emailEditText.getText().toString(), passwordEditText.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -57,6 +68,16 @@ public class LoginActivity extends AppCompatActivity {
     public void login(View view) {
         EditText emailEditText = findViewById(R.id.edittext_email);
         EditText passwordEditText = findViewById(R.id.edittext_password);
+        String email = String.valueOf(emailEditText.getText());
+        String password = String.valueOf(passwordEditText.getText());
+        if(TextUtils.isEmpty(email)){
+            Toast.makeText(LoginActivity.this, "Email is empty",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(TextUtils.isEmpty(password)){
+            Toast.makeText(LoginActivity.this, "Password is empty",Toast.LENGTH_SHORT).show();
+            return;
+        }
         mAuth.signInWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
