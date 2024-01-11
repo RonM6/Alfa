@@ -13,7 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.example.alfa.databinding.ActivityGoogleMapsBinding;
+
+import com.example.alfa.databinding.ActivityGpsTestBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
@@ -36,7 +37,7 @@ import java.util.zip.Inflater;
 public class GPS_test extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private ActivityGoogleMapsBinding binding;
+    private ActivityGpsTestBinding binding;
     private final int FINE_PERMISSION_CODE = 1;
     private Location currentLocation;
     private FusedLocationProviderClient fusedLocationProviderClient;
@@ -52,13 +53,12 @@ public class GPS_test extends FragmentActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Inflater ActivityGoogleMapsBinding;
-        ActivityGoogleMapsBinding = null;
-        binding = ActivityGoogleMapsBinding.inflate(getLayoutInflater());
+        Inflater ActivityGpsTestBinding;
+        ActivityGpsTestBinding = null;
+        binding = ActivityGpsTestBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-        searchView = findViewById(R.id.searchView);
         geocoder = new Geocoder(this);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -134,8 +134,6 @@ public class GPS_test extends FragmentActivity implements OnMapReadyCallback {
         if (searchedLocationMarkerOptions != null) {
             mMap.addMarker(searchedLocationMarkerOptions);
         }
-
-
     }
 
     protected void onResume() {
